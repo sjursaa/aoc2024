@@ -2,6 +2,8 @@ file = open("exampledata.txt")
 
 # init lists
 list = []
+unsafe = 0
+total = 0
 
 for line in file:
     whole_line = line.strip()
@@ -13,9 +15,22 @@ for line in file:
     # ascending
     if list[0] < list[len(list)-1]:
         print("ascending")
+        for i in range(1, len(list)):
+            #if turning point 
+            if (list[i-1] >= list[i]):
+                unsafe += 1
+                break
+            #if jump bigger than 4
+            if (int(list[i-1]) < (int(list[i]) - 3)):
+                unsafe += 1
+                break
+            else:
+                print("ok")
+        total += 1
 
     # descending
     if list[0] > list[len(list)-1]:
         print("descending")
 
-
+print(total)
+print(unsafe)
