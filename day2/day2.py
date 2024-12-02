@@ -1,4 +1,4 @@
-file = open("data.txt")
+file = open("exampledata.txt")
 
 # init lists
 list = []
@@ -16,9 +16,15 @@ for line in file:
     if (int(list[0]) < int(list[len(list)-1])):
         print("ascending")
         for i in range(1, len(list)):
+            list_popped = False 
             #if turning point 
             if (int(list[i-1]) >= int(list[i])):
                 print("ascending turning point")
+                if(list_popped == False):
+                    thing = list.pop(i-1)
+                    print(thing)
+                    list_popped = True
+                    break
                 unsafe += 1
                 break
             #if jump bigger than 4
@@ -34,9 +40,15 @@ for line in file:
     if (int(list[0]) > int(list[len(list)-1])):
         print("descending")
         for i in range(1, len(list)):
+            list_popped = False
             #if turning point 
             if (int(list[i-1]) <= int(list[i])):
                 print("descending turning point")
+                if(list_popped == False):
+                    thing = list.pop(i-1)
+                    print(thing)
+                    list_popped = True
+                    break
                 unsafe += 1
                 break
             #if jump bigger than 4
