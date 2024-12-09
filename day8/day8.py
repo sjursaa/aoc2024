@@ -38,8 +38,28 @@ print(list_of_pos)
 # TODO: compute distance between elements
 # TODO: place # in position with same distance before first element (within bounds)
 # TODO: place # in position with same distance after second element (within bounds)
+print("\niterating across list of chars: computing distance")
 for i, line in enumerate(list_of_pos):
-    print(i ,line)
+    new_char = False
+    if (list_of_pos[i-1][0] != list_of_pos[i][0]):
+        print("new char")
+        new_char = True
+        # print(list_of_pos[i][0])
+    # print(i ,line)
+    # print(i, line[0], line[1], line[2])
+    if (new_char == False):
+        print(list_of_pos[i-1])
+        print(list_of_pos[i])
+        print(list_of_pos[i][1] - list_of_pos[i-1][1])
+        print(list_of_pos[i][2] - list_of_pos[i-1][2])
+        distance1 = list_of_pos[i][1] - list_of_pos[i-1][1]
+        distance2 = list_of_pos[i][2] - list_of_pos[i-1][2]
+
+        # TODO: assign # to following positions
+        print(array2d[list_of_pos[i-1][1]-distance1][list_of_pos[i-1][2]-distance2])
+        print(array2d[list_of_pos[i][1]+distance1][list_of_pos[i][2]+distance2])
+        new_char = False
+        # print(list_of_pos[i-1][2])
 
 
 
