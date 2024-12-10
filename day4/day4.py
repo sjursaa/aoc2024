@@ -1,6 +1,6 @@
-file = open("exampledata.txt")
+# file = open("exampledata.txt")
 # file = open("exampledata2.txt")
-# file = open("data.txt")
+file = open("data.txt")
 
 # init lists
 array2d = []
@@ -45,7 +45,7 @@ for i, line in enumerate(array2d):
                 print(e, i, j)
                 # check diagonal backwards/down
             try:
-                if array2d[i+1][j-1] == 'M' and array2d[i+2][j-2] == 'A' and array2d[i+3][j-3] == 'S':
+                if array2d[i+1][j-1] == 'M' and array2d[i+2][j-2] == 'A' and array2d[i+3][j-3] == 'S' and j-3 >= 0 and j-2 >= 0 and j-1 >= 0:
                     print("xmas back/down")
                     xmas += 1
             except IndexError as e:
@@ -75,7 +75,8 @@ for i, line in enumerate(array2d):
                 print(e, i, j)
             try:
                 # check diagonal backwards/down
-                if array2d[i+1][j-1] == 'A' and array2d[i+2][j-2] == 'M' and array2d[i+3][j-3] == 'X':
+                if array2d[i+1][j-1] == 'A' and array2d[i+2][j-2] == 'M' and array2d[i+3][j-3] == 'X' and j-3 >= 0 and j-2 >= 0 and j-1 >= 0:
+                    print(i, j)
                     print("samx back/down")
                     xmas += 1
             except IndexError as e:
