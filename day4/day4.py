@@ -13,11 +13,8 @@ for line in file:
     for char in whole_line:
         list.append(char)
     array2d.append(list)
-    # print(list)
 
-# for line in array2d:
-#     print(line)
-
+# Pt. 1
 xmas = 0
 for i, line in enumerate(array2d):
     for j, char in enumerate(line):
@@ -85,6 +82,7 @@ for i, line in enumerate(array2d):
 
 print(xmas)
 
+# Pt. 2
 xmas2 = 0
 for i, line in enumerate(array2d):
     for j, char in enumerate(line):
