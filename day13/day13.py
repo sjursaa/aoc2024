@@ -47,6 +47,7 @@ for line in file:
         print(button_b_x)
         print(button_b_y)
     if line.startswith("Prize:"):
+        game += 1
         print("Prize:")
         # TODO: get X and Y coords for prize
         print(line)
@@ -57,9 +58,6 @@ for line in file:
         prize_y = int(''.join(filter(str.isdigit, second_half)))
         print(prize_x)
         print(prize_y)
-    if line == "\n":
-        game += 1
-        print("empty line")
         # TODO: put computations here
         for i in range(1,100):
             remainder_x = prize_x - (button_b_x * i) 
@@ -86,6 +84,8 @@ for line in file:
                 break
                 # break
             # print("nu")
+    if line == "\n":
+        print("empty line")
 
 print(int(total_tokens))
 print(win, "/", game)
