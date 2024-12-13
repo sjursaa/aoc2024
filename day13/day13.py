@@ -22,11 +22,8 @@ remainder_y = 0
 list_of_tokens = []
 
 for line in file:
-    # print(line.strip())
     if line.startswith("Button A:"):
         print("Button A:")
-        # TODO: get X and Y coords for button A
-        # print(line)
         line.find("Button A: ,")
         first_half = line.split(",")[0]
         second_half = line.split(",")[1]
@@ -36,9 +33,7 @@ for line in file:
         print(button_a_y)
         # button_a_y = button_a_y_list[0]
     if line.startswith("Button B:"):
-        # print("Button B:")
         print(line)
-        # TODO: get X and Y coords for button B
         line.find("Button B: ,")
         first_half = line.split(",")[0]
         second_half = line.split(",")[1]
@@ -49,7 +44,6 @@ for line in file:
     if line.startswith("Prize:"):
         game += 1
         print("Prize:")
-        # TODO: get X and Y coords for prize
         print(line)
         line.find("Prize: ,")
         first_half = line.split(",")[0]
@@ -58,7 +52,6 @@ for line in file:
         prize_y = int(''.join(filter(str.isdigit, second_half)))
         print(prize_x)
         print(prize_y)
-        # TODO: put computations here
         for i in range(1,100):
             remainder_x = prize_x - (button_b_x * i) 
             remainder_y = prize_y - (button_b_y * i)
@@ -82,8 +75,6 @@ for line in file:
                 total_tokens += tokens
                 win += 1
                 break
-                # break
-            # print("nu")
     if line == "\n":
         print("empty line")
 
