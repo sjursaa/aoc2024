@@ -1,5 +1,5 @@
-# file = open("exampledata.txt")
-file = open("data.txt")
+file = open("exampledata.txt")
+# file = open("data.txt")
 
 # TODO: init w/ 0, update w/ values from exampledata/data 
 button_a_x = 0
@@ -50,14 +50,34 @@ for line in file:
         second_half = line.split(",")[1]
         prize_x = int(''.join(filter(str.isdigit, first_half)))
         prize_y = int(''.join(filter(str.isdigit, second_half)))
+        # pt. 2 tweak:
+        # prize_x += 10000000000000
+        # prize_y += 10000000000000
         print(prize_x)
         print(prize_y)
-        for i in range(1,100):
+
+        # TODO: find good start and stop values for indexing 
+        start_index = 0
+        end_index = 100
+        for i in range(0, 600):
+            print(i)
+            remainder_x = prize_x - (button_b_x * i*10) 
+            remainder_y = prize_y - (button_b_y * i*10)
+
+            if remainder_x <= 0 or remainder_y <= 0:
+                start_index = (i - 1)*10
+                end_index = (i)*10
+                break
+
+        for i in range(0, 100):
+            # print(startingpoints[0], startingpoints[1], startingpoints[2], startingpoints[3])
             remainder_x = prize_x - (button_b_x * i) 
             remainder_y = prize_y - (button_b_y * i)
+
+            print(i)
         
-            # print(remainder_x)
-            # print(remainder_y)
+            print("remainder_x", remainder_x)
+            print("remainder_y", remainder_y)
 
             button_ax_presses = (remainder_x / button_a_x) # 80
             button_ay_presses = (remainder_y / button_a_y) # 80 
@@ -74,6 +94,8 @@ for line in file:
                 list_of_tokens.append(tokens)
                 total_tokens += tokens
                 win += 1
+                break
+            if (remainder_x < 0 or remainder_y < 0 ) :
                 break
     if line == "\n":
         print("empty line")
