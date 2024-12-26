@@ -19,7 +19,10 @@ def check_order(rules, updates):
         last = rule.split("|")[1]
         print(first, last)
         for update in updates:
-            print(update)
+            if first in update and last in update:
+                print("they both be in here mon", update)
+                # TODO: check if first appears before last in update
+                
 
 if __name__ == "__main__":
     rules, updates = open_file("exampledata.txt")
