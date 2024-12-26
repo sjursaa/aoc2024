@@ -14,23 +14,60 @@ def print_map(map):
         print(line)
 
 def move(map):
-    # print("Moving")
+    keepgoing = True
     for i, line in enumerate(map):
         for j, char in enumerate(line):
-            if char == "^" and map[i-1][j] == ".":
-                print("guard moving up from:", i, j)
-                map[i][j] = "."
-                map[i-1][j] = "."
-            if char == "v":
-                print("guard moving down from:", i, j)
-            if char == ">":
-                print("guard moving right from:", i, j)
-            if char == "<":
-                print("guard moving right from:", i, j)
+            try: 
+                if char == "^" and map[i-1][j] != "#":
+                    print("guard moving up from:", i, j)
+                    map[i][j] = "X"
+                    map[i-1][j] = "^"
+                if char == "^" and map[i-1][j] == "#":
+                    print("guard turning right at:", i, j)
+                    map[i][j] = ">"
+                if char == "v" and map[i+1][j] != "#":
+                    print("guard moving down from:", i, j)
+                    map[i][j] = "X"
+                    map[i+1][j] = "v"
+                if char == "v" and map[i+1][j] == "#":
+                    print("guard turning left at:", i, j)
+                    map[i][j] = "<"
+                if char == ">" and map[i][j+1] != "#":
+                    print("guard moving right from:", i, j)
+                    map[i][j] = "X"
+                    map[i][j+1] = ">"
+                if char == ">" and map[i][j+1] == "#":
+                    print("guard turning down at:", i, j)
+                    map[i][j] = "v"
+                if char == "<" and map[i][j-1] != "#":
+                    print("guard moving left from:", i, j)
+                    map[i][j] = "X"
+                    map[i][j-1] = "<"
+                if char == "<" and map[i][j-1] == "#":
+                    print("guard turning up at:", i, j)
+                    map[i][j] = "^"
+            except Exception as e:
+                map[i][j] = "X"
+                print(e)
+                keepgoing = False
+    return map, keepgoing
+
+def count_x(map):
+    count = 0
+    for line in map:
+        for char in line:
+            if char == "X":
+                count += 1
+    return count
 
 if __name__ == "__main__":
     # print("hello world")
-    map = open_map("exampledata.txt")
+    map = open_map("data.txt")
     print_map(map)
-    move(map)
+    running = True
+    while running == True:
+        map1, keepgoing = move(map)
+        print_map(map1)
+        running = keepgoing
+        print(count_x(map1))
     
