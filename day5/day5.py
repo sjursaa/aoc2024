@@ -13,9 +13,18 @@ def print_contents(list):
     for item in list:
         print(item)
 
+def check_order(rules, updates):
+    for rule in rules:
+        first = rule.split("|")[0]
+        last = rule.split("|")[1]
+        print(first, last)
+        for update in updates:
+            print(update)
+
 if __name__ == "__main__":
     rules, updates = open_file("exampledata.txt")
     print_contents(rules)
     print_contents(updates)
+    check_order(rules, updates)
 
 
