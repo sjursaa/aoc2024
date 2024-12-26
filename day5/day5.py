@@ -46,11 +46,13 @@ def find_middle_value(list):
     return sum
 
 if __name__ == "__main__":
-    rules, updates = open_file("exampledata.txt")
+    # rules, updates = open_file("exampledata.txt")
+    rules, updates = open_file("data.txt")
     # print_contents(rules)
     # print_contents(updates)
     ok_list = check_order(rules, updates)
     print_contents(ok_list)
-    find_middle_value(ok_list)
+    sum = find_middle_value(ok_list)
+    print(sum)
 
 

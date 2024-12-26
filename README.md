@@ -8,7 +8,7 @@ advent of code solutions written in python
 - day 2 -- 1 stars -- in progress
 - day 3 -- 1 stars -- in progress
 - day 4 -- 2 stars -- complete
-- day 5 -- 0 stars -- not started
+- day 5 -- 1 stars -- in progress
 - day 6 -- 0 stars -- not started
 - day 7 -- 0 stars -- not started
 - day 8 -- 0 stars -- in progress
