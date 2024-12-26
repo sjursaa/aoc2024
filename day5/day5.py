@@ -20,19 +20,26 @@ def check_order(rules, updates):
         print(first, last)
         for update in updates:
             update_list = update.split(",")
-            # print(update_list)
             if first in update_list and last in update_list:
-                # print("they both be in here mon", update_list)
                 pos_first = update_list.index(first)
                 pos_last = update_list.index(last)
-                # if pos_first < pos_last:
-                #     print("ok")
-                    # print("they both be in here mon", update_list)
                 if pos_first > pos_last:
-                    # print("not ok")
-                    # print("not ok", update_list)
                     updates.remove(update)
-    # print(updates)
+    return updates
+
+# TODO: rearrange incorrect updates
+def rearrange_updates(rules, updates):
+    for rule in rules:
+        first = rule.split("|")[0]
+        last = rule.split("|")[1]
+        print(first, last)
+        for update in updates:
+            update_list = update.split(",")
+            if first in update_list and last in update_list:
+                pos_first = update_list.index(first)
+                pos_last = update_list.index(last)
+                if pos_first > pos_last:
+                    updates.remove(update)
     return updates
                     
 def find_middle_value(list):
@@ -40,9 +47,7 @@ def find_middle_value(list):
     for line in list:
         line_list = line.split(",")
         middle = int(len(line_list) / 2)
-        print("middle item in list", line_list[middle])
         sum += int(line_list[middle])
-    print(sum)
     return sum
 
 if __name__ == "__main__":
@@ -52,7 +57,7 @@ if __name__ == "__main__":
     # print_contents(updates)
     ok_list = check_order(rules, updates)
     print_contents(ok_list)
-    sum = find_middle_value(ok_list)
-    print(sum)
+    sum_ok = find_middle_value(ok_list)
+    print("Sum of OK middle values", sum_ok)
 
 
